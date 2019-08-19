@@ -14,29 +14,44 @@ ApplicationWindow {
 
     GridLayout {
         anchors.fill: parent
-        rows: 2
+        rows: 3
+
+        TextField {
+            id: titleTextField
+            Layout.fillWidth: true
+            Layout.row: 0
+            leftPadding: 10
+            height: 40
+            text: context.title
+        }
 
         TextArea {
-            id: textBox
+            id: contentTextArea
             Layout.fillWidth: true
             Layout.fillHeight: true
-            Layout.row: 0
-            text: context.content;
+            Layout.row: 1
+            leftPadding: 10
+            text: context.content
         }
 
         Button {
-            Layout.leftMargin: 10
-            Layout.rightMargin: 10
-            Layout.fillWidth: true
-            Layout.row: 1
-            text: context.content
-            height: 40
+            Layout.alignment: Qt.AlignHCenter
+            Layout.row: 2
+            text: "save"
+            implicitWidth: 200
+            implicitHeight: 50
         }
     }
 
     Binding {
         target: context
+        property: "title"
+        value: titleTextField.text
+    }
+
+    Binding {
+        target: context
         property: "content"
-        value: textBox.text
+        value: contentTextArea.text
     }
 }
