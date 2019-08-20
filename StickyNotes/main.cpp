@@ -3,18 +3,19 @@
 #include <QQuickStyle>
 #include <QQmlContext>
 
-#include "root.h"
+#include "stickynotescore.h"
 
 int main(int argc, char *argv[])
 {
+    qmlRegisterType<Core::Root>("Core", 1, 0, "Root");
+    qmlRegisterType<Core::NotesManager>("Core", 1, 0, "NotesManager");
+    qmlRegisterType<Core::Note>("Core", 1, 0, "Note");
+
     QQuickStyle::setStyle("Material");
 
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QGuiApplication app(argc, argv); 
     QQmlApplicationEngine engine;
-
-    Core::Root *root = new Core::Root();
-    engine.rootContext()->setContextProperty("context", root);
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,

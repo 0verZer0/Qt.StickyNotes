@@ -17,6 +17,7 @@ namespace Core {
 
     public:
         explicit Root();
+        virtual ~Root();
         NotesManager* getManager() const;
     };
 }

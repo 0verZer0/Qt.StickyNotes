@@ -40,5 +40,4 @@ unix {
     INSTALLS += target
 }
 
-DISTFILES += \
-    notes.json
+DISTFILES +=

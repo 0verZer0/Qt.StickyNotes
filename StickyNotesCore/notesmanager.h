@@ -27,7 +27,7 @@ namespace Core {
         void setNotes(const QList<Note *> &newValue);
 
     private:
-        QJsonArray getNotesFromJson() const;
+        QJsonArray getNotesFromJson();
 
     signals:
         void notesChanged();

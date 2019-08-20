@@ -2,15 +2,20 @@ import QtQml 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 import QtQuick.Controls.Material 2.12
+import Core 1.0
 
 ApplicationWindow {
+    Root { id: root }
+
     Material.theme: Material.Dark
     Material.accent: Material.Purple
 
     visible: true
-    width: 300
-    height: 300
-    title: context.title
+    width: 250
+    height: 250
+    minimumWidth: 250
+    minimumHeight: 250
+    title: root.manager.notes[0].title
 
     GridLayout {
         anchors.fill: parent
@@ -22,7 +27,8 @@ ApplicationWindow {
             Layout.row: 0
             leftPadding: 10
             height: 40
-            text: context.manager.notes[0].title
+            maximumLength: 25
+            text: root.manager.notes[0].title
         }
 
         TextArea {
@@ -31,7 +37,7 @@ ApplicationWindow {
             Layout.fillHeight: true
             Layout.row: 1
             leftPadding: 10
-            text: context.content
+            text: root.manager.notes[0].content
         }
 
         Button {
@@ -44,14 +50,14 @@ ApplicationWindow {
     }
 
     Binding {
-        target: context
-        property: "title"
+        target: root
+        property: "manager.notes[0].title"
         value: titleTextField.text
     }
 
     Binding {
-        target: context
-        property: "content"
+        target: root
+        property: "manager.notes[0].content"
         value: contentTextArea.text
     }
 }

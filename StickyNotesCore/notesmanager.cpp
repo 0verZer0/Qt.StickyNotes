@@ -24,8 +24,8 @@ void NotesManager::setNotes(const QList<Note *> &newValue){
     emit notesChanged();
 }
 
-QJsonArray NotesManager::getNotesFromJson() const{
-    QFile file("/notes.json");
+QJsonArray NotesManager::getNotesFromJson(){
+    QFile file("notes.json");
     file.open(QIODevice::ReadOnly | QIODevice::Text);
     QByteArray jsonData = file.readAll();
     file.close();
