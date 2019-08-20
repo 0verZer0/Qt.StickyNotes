@@ -34,3 +34,8 @@ else:unix: LIBS += -L$$PWD/../build-StickyNotesCore-Desktop_Qt_5_13_0_GCC_64bit-
 
 INCLUDEPATH += $$PWD/../StickyNotesCore
 DEPENDPATH += $$PWD/../StickyNotesCore
+
+DISTFILES += \
+    notes.json
+
+HEADERS +=
