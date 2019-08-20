@@ -7,7 +7,6 @@ class STICKYNOTESCORESHARED_EXPORT StickyNotesCore
 
 public:
     StickyNotesCore();
-    int Test();
 };
 
 #endif // STICKYNOTESCORE_H

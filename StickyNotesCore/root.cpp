@@ -1,26 +1,10 @@
 #include "root.h"
+#include "notesmanager.h"
 
 using namespace Core;
 
-Root::Root(){
-    m_title = "none";
-    m_content = "";
+Root::Root(){   
+    //test
+    Core::NotesManager manager;
 }
 
-QString Root::getTitle() const{
-    return  m_title;
-}
-
-void Root::setTitle(const QString &newValue){
-    m_title = newValue;
-    emit titleChanged();
-}
-
-QString Root::getContent() const{
-    return m_content;
-}
-
-void Root::setContent(const QString &newValue){
-    m_content = newValue;
-    emit contentChanged();
-}

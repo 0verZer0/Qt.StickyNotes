@@ -2,16 +2,21 @@
 #define NOTESMANAGER_H
 
 #include <QObject>
+#include <QFile>
+#include <QFile>
+#include <QByteArray>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonArray>
 
-class NotesManager : public QObject
-{
-    Q_OBJECT
-public:
-    explicit NotesManager(QObject *parent = nullptr);
+namespace Core {
+    class NotesManager : public QObject
+    {
+        Q_OBJECT
 
-signals:
+    public:
+        explicit NotesManager();
 
-public slots:
-};
-
+    };
+}
 #endif // NOTESMANAGER_H
