@@ -39,3 +39,6 @@ unix {
     target.path = /usr/lib
     INSTALLS += target
 }
+
+DISTFILES += \
+    notes.json

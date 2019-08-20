@@ -22,7 +22,7 @@ ApplicationWindow {
             Layout.row: 0
             leftPadding: 10
             height: 40
-            text: context.title
+            text: context.manager.notes[0].title
         }
 
         TextArea {

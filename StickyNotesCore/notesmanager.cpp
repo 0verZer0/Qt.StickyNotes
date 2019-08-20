@@ -2,9 +2,30 @@
 
 using namespace Core;
 
-NotesManager::NotesManager()
-{
-    QFile file("notes.json");
+NotesManager::NotesManager(){
+    QJsonArray array = getNotesFromJson();
+    m_notes.clear();
+
+    foreach (const QJsonValue &item, array)
+    {
+        Note *note = new Note();
+        note->setTitle(item.toObject().value("title").toString());
+        note->setContent(item.toObject().value("content").toString());
+        m_notes.append(note);
+    }
+}
+
+QList<Note *> NotesManager::getNotes() const{
+    return m_notes;
+}
+
+void NotesManager::setNotes(const QList<Note *> &newValue){
+    m_notes = newValue;
+    emit notesChanged();
+}
+
+QJsonArray NotesManager::getNotesFromJson() const{
+    QFile file("/notes.json");
     file.open(QIODevice::ReadOnly | QIODevice::Text);
     QByteArray jsonData = file.readAll();
     file.close();
@@ -13,7 +34,5 @@ NotesManager::NotesManager()
     QJsonObject object = document.object();
 
     QJsonValue value = object.value("notes");
-    QJsonArray array = value.toArray();
-    foreach (const QJsonValue &item, array)
-        qDebug() << v.toObject().value("ID").toInt();
+    return value.toArray();
 }

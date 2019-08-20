@@ -1,10 +1,11 @@
 #include "root.h"
-#include "notesmanager.h"
 
 using namespace Core;
 
-Root::Root(){   
-    //test
-    Core::NotesManager manager;
+Root::Root(){
+    m_manager = new NotesManager ();
 }
 
+NotesManager* Root::getManager() const{
+    return m_manager;
+}
